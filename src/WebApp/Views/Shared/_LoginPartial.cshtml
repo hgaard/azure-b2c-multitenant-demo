@@ -1,0 +1,15 @@
+﻿@using WebApp.B2CUtil
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+    </ul>
+}
+
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Login internal", "Login", "Account", new { type = AuthType.Internal }, null)</li>
+        <li>@Html.ActionLink("Login external", "Login", "Account", new { type = AuthType.External }, null)</li>
+    </ul>
+}
