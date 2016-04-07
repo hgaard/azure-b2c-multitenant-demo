@@ -6,6 +6,6 @@ This app will demonstrate how be able to login to an app with both Azure AD cred
 * F5
 
 ##Notes
-In order to user this test app it necessary to have 2 azure AD tenants setup. One regular and one B2C instance. Guides on how to set these up, can be foind here:
+In order to user this test app it necessary to have 2 azure AD tenants setup. One regular and one B2C instance. Guides on how to set these up, can be found here:
 [here](https://azure.microsoft.com/en-us/documentation/services/active-directory-b2c/)
 
