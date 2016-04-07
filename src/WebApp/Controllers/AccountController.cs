@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using WebApp.B2CUtil;
+using WebApp.AdalExt;
 
 namespace WebApp.Controllers
 {

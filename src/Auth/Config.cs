@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace Auth
 {
-    public class Configuration
+    public class Config
     {
         public const string AcrClaimType = "http://schemas.microsoft.com/claims/authnclassreference";
         public const string PolicyKey = "b2cpolicy";
@@ -30,5 +25,8 @@ namespace Auth
         public static string SignUpByEmailPolicyId = ConfigurationManager.AppSettings["Auth.External.SignUpPolicyId"];
         public static string SignInByEmailPolicyId = ConfigurationManager.AppSettings["Auth.External.SignInPolicyId"];
         public static string ProfilePolicyId = ConfigurationManager.AppSettings["Auth.External.UserProfilePolicyId"];
+
+        public static string CommonPolicy = SignInByEmailPolicyId;
+        public const string DiscoverySuffix = ".well-known/openid-configuration";
     }
 }

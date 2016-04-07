@@ -7,7 +7,8 @@ using Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 
-namespace WebApp.B2CUtil
+
+namespace WebApp.AdalExt
 {
     public class LoginService
     {
@@ -19,13 +20,13 @@ namespace WebApp.B2CUtil
                     new AuthenticationProperties(
                         new Dictionary<string, string>
                         {
-                            {Configuration.PolicyKey, Configuration.SignInByEmailPolicyId}
+                            {Config.PolicyKey, Config.SignInByEmailPolicyId}
                         })
                     {
                         RedirectUri = "/",
                         AllowRefresh = true,
                         IsPersistent = true
-                    }, Configuration.ExternalUsersTenant);
+                    }, Config.ExternalUsersTenant);
             }
             else if (loginType == AuthType.Internal)
             {
@@ -35,7 +36,7 @@ namespace WebApp.B2CUtil
                         RedirectUri = "/",
                         AllowRefresh = true,
                         IsPersistent = true
-                    }, Configuration.InternalUsersTenant);
+                    }, Config.InternalUsersTenant);
             }
         }
 
@@ -45,8 +46,8 @@ namespace WebApp.B2CUtil
 
             var authority = string.Format(
                 CultureInfo.InvariantCulture,
-                Configuration.AadInstance,
-                authType == AuthType.Internal ? Configuration.InternalUsersTenant : Configuration.ExternalUsersTenant,
+                Config.AadInstance,
+                authType == AuthType.Internal ? Config.InternalUsersTenant : Config.ExternalUsersTenant,
                 string.Empty, string.Empty);
 
             var authContext = new AuthenticationContext(authority);
@@ -56,7 +57,7 @@ namespace WebApp.B2CUtil
             if (authType == AuthType.Internal)
             {
                 context.GetOwinContext().Authentication.SignOut(
-                    Configuration.InternalUsersTenant,
+                    Config.InternalUsersTenant,
                     CookieAuthenticationDefaults.AuthenticationType);
             }
             else if (authType == AuthType.External)
@@ -65,8 +66,8 @@ namespace WebApp.B2CUtil
                     new AuthenticationProperties(
                         new Dictionary<string, string>
                     {
-                        {Configuration.PolicyKey, ClaimsPrincipal.Current.FindFirst(Configuration.AcrClaimType).Value}
-                    }), Configuration.ExternalUsersTenant,
+                        {Config.PolicyKey, ClaimsPrincipal.Current.FindFirst(Config.AcrClaimType).Value}
+                    }), Config.ExternalUsersTenant,
                         CookieAuthenticationDefaults.AuthenticationType);
             }
         }

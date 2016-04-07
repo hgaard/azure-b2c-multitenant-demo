@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using Auth;
-using WebApp.Clients;
 
 namespace WebApp.Controllers
 {
@@ -10,13 +9,13 @@ namespace WebApp.Controllers
     {
         public async Task<ActionResult> Index()
         {
-            var client = new TokenApiClient("http://localhost:64017/api/");
+            var client = new ApiClient();
 
-            var token = await client.GetToken();
+            var token = await client.GetAsync<string>("http://localhost:64017/api/token");
 
 
             ViewBag.Token = token;
-            ViewBag.TokenDecoded = JWT.JsonWebToken.Decode(token.Split(' ')[1], Configuration.ExternalUsersClientSecret, false);
+            ViewBag.TokenDecoded = JWT.JsonWebToken.Decode(token.Split(' ')[1], Config.ExternalUsersClientSecret, false);
 
             return View();
         }

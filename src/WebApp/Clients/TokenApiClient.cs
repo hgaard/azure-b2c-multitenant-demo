@@ -3,13 +3,13 @@ using Auth;
 
 namespace WebApp.Clients
 {
-    public class TokenApiClient : ApiClient
-    {
-        public TokenApiClient(string url) : base(url, string.Empty, string.Empty) { }
+    //public class TokenApiClient : ApiClient
+    //{
+    //    public TokenApiClient(string url) : base(url, string.Empty) { }
 
-        public async Task<string> GetToken()
-        {
-            return await GetAsync<string>("token");
-        }
-    }
+    //    public async Task<string> GetToken()
+    //    {
+    //        return await GetAsync<string>("token");
+    //    }
+    //}
 }

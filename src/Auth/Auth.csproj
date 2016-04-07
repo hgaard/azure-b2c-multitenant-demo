@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiClient.cs" />
-    <Compile Include="Configuration.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="NaiveSessionCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

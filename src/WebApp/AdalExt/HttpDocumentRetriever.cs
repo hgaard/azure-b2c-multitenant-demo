@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Protocols;
 
-namespace WebApp.B2CUtil
+namespace WebApp.AdalExt
 {
     /// <summary>
     /// Another class that has been inherited from the b2c examples and will be obsolete when ADAL supports b2c

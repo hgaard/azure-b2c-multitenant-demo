@@ -1,4 +1,4 @@
-﻿namespace WebApp.B2CUtil
+﻿namespace WebApp.AdalExt
 {
     public enum AuthType
     {

@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.IdentityModel;
 using Microsoft.IdentityModel.Protocols;
 
-
-namespace WebApp.B2CUtil
+namespace WebApp.AdalExt
 {
     // As explained below, this class serves as a temp helper class until the bits are released!!
     // This class is a temporary workaround for AAD B2C,

@@ -2,7 +2,7 @@
 using Auth;
 using Microsoft.Owin;
 
-namespace WebApp.B2CUtil
+namespace WebApp.AdalExt
 {
     /// <summary>
     /// Extehtion class for determining authentication context
@@ -14,12 +14,12 @@ namespace WebApp.B2CUtil
             var audience = ctxt.Authentication.User.Claims.FirstOrDefault(x => x.Type == "aud");
             if (audience == null) return AuthType.None;
 
-            if (audience.Value == Configuration.ExternalUsersClientId)
+            if (audience.Value == Config.ExternalUsersClientId)
             {
                 return AuthType.External;
             }
 
-            return audience.Value == Configuration.InternalUsersClientId ? AuthType.Internal : AuthType.None;
+            return audience.Value == Config.InternalUsersClientId ? AuthType.Internal : AuthType.None;
         }
     }
 }
