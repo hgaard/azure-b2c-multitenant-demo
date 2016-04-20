@@ -6,6 +6,7 @@ using Auth;
 using Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using WebApp.Services;
 
 
 namespace WebApp.AdalExt

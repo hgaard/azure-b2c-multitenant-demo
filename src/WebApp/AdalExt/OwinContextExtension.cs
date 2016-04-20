@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Auth;
 using Microsoft.Owin;
+using WebApp.Services;
 
 namespace WebApp.AdalExt
 {

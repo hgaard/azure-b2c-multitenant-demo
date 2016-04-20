@@ -38,7 +38,7 @@ namespace WebApp
             {
                 AuthenticationType = Auth.Config.ExternalUsersTenant,
                 // These are standard OpenID Connect parameters, with values pulled from web.config
-                ClientId = Auth.Config.ExternalUsersClientId,
+                ClientId = Config.ExternalUsersClientId,
                 RedirectUri = Auth.Config.RedirectUri,
                 PostLogoutRedirectUri = Auth.Config.RedirectUri,
                 Notifications = new OpenIdConnectAuthenticationNotifications

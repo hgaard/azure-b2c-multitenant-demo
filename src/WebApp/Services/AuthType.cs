@@ -1,4 +1,4 @@
-﻿namespace WebApp.AdalExt
+﻿namespace WebApp.Services
 {
     public enum AuthType
     {

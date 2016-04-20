@@ -11,7 +11,7 @@ namespace WebApp.Controllers
         {
             var client = new ApiClient();
 
-            var token = await client.GetAsync<string>("http://localhost:64017/api/token");
+            var token = await client.GetAsync<string>("http://localhost:55473/api/token");
 
 
             ViewBag.Token = token;

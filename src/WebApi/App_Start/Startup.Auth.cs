@@ -12,16 +12,16 @@ namespace WebApi
     {
         public void ConfigureAuth(IAppBuilder app)
         {
-            var tvps = new TokenValidationParameters
-            {
-                ValidAudiences = new[] { Config.ExternalUsersClientId, Config.InternalUsersClientId},
-            };
-
             // Add handler for tokens from the Lor AAD
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
             {
                 // This SecurityTokenProvider fetches the Azure AD B2C metadata & signing keys from the OpenIDConnect metadata endpoint
-                AccessTokenFormat = new JwtFormat(tvps, new OpenIdConnectCachingSecurityTokenProvider(string.Format(Config.AadInstance, Config.InternalUsersTenant, string.Empty, Config.DiscoverySuffix, string.Empty))),
+                AccessTokenFormat = new JwtFormat(new TokenValidationParameters
+                {
+                    ValidAudience = Config.InternalUsersClientId
+                }, 
+                new OpenIdConnectCachingSecurityTokenProvider(
+                    string.Format(Config.AadInstance, Config.InternalUsersTenant, string.Empty, Config.DiscoverySuffix, string.Empty))),
                 AuthenticationType = Config.InternalUsersTenant
             });
 
@@ -29,7 +29,12 @@ namespace WebApi
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
             {
                 // This SecurityTokenProvider fetches the Azure AD B2C metadata & signing keys from the OpenIDConnect metadata endpoint
-                AccessTokenFormat = new JwtFormat(tvps, new OpenIdConnectCachingSecurityTokenProvider(String.Format(Config.AadInstance, Config.ExternalUsersTenant, "v2.0", Config.DiscoverySuffix, "?p=" + Config.CommonPolicy))),
+                AccessTokenFormat = new JwtFormat(new TokenValidationParameters
+                {
+                    ValidAudience = Config.ExternalUsersClientId
+                }, 
+                new OpenIdConnectCachingSecurityTokenProvider(
+                    string.Format(Config.AadInstance, Config.ExternalUsersTenant, "v2.0", Config.DiscoverySuffix, "?p=" + Config.CommonPolicy))),
                 AuthenticationType = Config.ExternalUsersTenant
             });
         }
