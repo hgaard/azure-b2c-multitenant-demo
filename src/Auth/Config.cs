@@ -18,7 +18,6 @@ namespace Auth
         public static string InternalUsersTenant = ConfigurationManager.AppSettings["Auth.Internal.Tenant"];
         public static string InternalUsersClientId = ConfigurationManager.AppSettings["Auth.Internal.ClientId"];
         public static string InternalUsersClientSecret = ConfigurationManager.AppSettings["Auth.Internal.ClientSecret"];
-        public static string InternalUsersTenantMetadataAddress = ConfigurationManager.AppSettings["Auth.Internal.TenantMetadataAddress"];
         public static string InternalUsersAppIdUri = ConfigurationManager.AppSettings["Auth.Internal.AppIdUri"];
 
         // B2C policy identifiers

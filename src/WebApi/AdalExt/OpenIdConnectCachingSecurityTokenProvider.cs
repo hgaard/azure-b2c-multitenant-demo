@@ -7,6 +7,8 @@ using Microsoft.Owin.Security.Jwt;
 
 namespace WebApi.AdalExt
 {
+    // This class is necessary because the OAuthBearer Middleware does not leverage
+    // the OpenID Connect metadata endpoint exposed by the STS by default.
     public class OpenIdConnectCachingSecurityTokenProvider : IIssuerSecurityTokenProvider
     {
         public ConfigurationManager<OpenIdConnectConfiguration> _configManager;
