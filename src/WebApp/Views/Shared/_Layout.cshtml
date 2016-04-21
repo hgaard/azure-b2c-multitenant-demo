@@ -21,7 +21,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Manage", "Index", "Manage")</li> <!-- Intentionally enabled for unauthorised users to test this functionality -->
+                    
                     @if (Request.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Api", "Index", "Apitest")</li>
